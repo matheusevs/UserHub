@@ -10,7 +10,7 @@ O UserHub é uma plataforma de gerenciamento de usuários desenvolvida para faci
 
 - **Segurança da senha:** Os usuários podem se cadastrar na plataforma, contudo, para garantir a segurança de suas senhas, é necessário atender a certos requisitos, como ter um mínimo de dígitos e incluir letras maiúsculas, entre outros critérios. - Funcionalidade em desenvolvimento
 
-- **Gestão de Usuários:** Os usuários autenticados podem visualizar, editar e excluir suas próprias informações de perfil, proporcionando controle sobre seus dados pessoais. - Funcionalidade em desenvolvimento
+- **Gestão de Usuários:** Os usuários autenticados podem visualizar, editar e excluir suas próprias informações de perfil, proporcionando controle sobre seus dados pessoais.
 
 - **Histórico de Atividades:** A funcionalidade de histórico de atividades é útil para acompanhar e registrar as ações realizadas pelos usuários no sistema.
 
