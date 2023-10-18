@@ -105,6 +105,44 @@ jQuery(document).ready(function(){
 
     });
 
+    $(document).on('click', '.btn-delete', function() {
+        
+        let id = $(this).val();
+        let btnConfirmDelete = document.getElementById("btn-confirm-delete");
+        btnConfirmDelete.setAttribute("data-id", id);
+        
+    });
+
+    $("#formDelete").on("submit", event => {
+
+        event.preventDefault();
+        let btnConfirmDelete = document.getElementById("btn-confirm-delete");
+        let id = btnConfirmDelete.getAttribute("data-id");
+
+        $.ajax({
+            type: "DELETE",
+            url: `/deletarMeuUsuario/${id}`,
+            contentType: 'application/json',
+            success: res => {
+
+                res = JSON.parse(res);
+
+                if(!res.error){
+
+                    window.location.href = "/login";
+
+                } else {
+
+                    toastr.error(res.error,'Erro!');
+
+                }
+
+            }
+
+        });
+    
+    });
+
     $('#togglePassword').click(function () {
         let senhaInput = $('#senhaAtual');
         let tipo = senhaInput.attr('type');

@@ -43,7 +43,7 @@ if($user['roles'] == 'admin'){
         <div id="botoes">
             <button class="btn-edit" value="<?php echo $user['id']; ?>" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal"><i class="fas fa-pencil-alt"></i> Editar</button>
             <button class="btn-alterPassword" value="<?php echo $user['id']; ?>" data-bs-toggle="modal" data-bs-target="#alterarSenhaModal"><i class="fas fa-lock"></i> Alterar senha</button>
-            <button class="btn-delete"><i class="fas fa-trash-alt"></i> Deletar</button>
+            <button class="btn btn-danger btn-delete" style="display: inline;" value="<?php echo $user['id'] ?>"  data-bs-toggle="modal" data-bs-target="#confirm-delete"><i class="fas fa-trash-alt"></i> Deletar</button>
         </div>
     </div>
 
@@ -119,6 +119,28 @@ if($user['roles'] == 'admin'){
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             <button type="submit" class="btn btn-primary" id="btnSalvarSenha">Salvar</button>
                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Confirmação de exclusão</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja excluir seu usuário?
+                </div>
+                <div class="modal-footer">
+                    <form id="formDelete" style="display: inline;">
+                        <button type="button" id="fecharDeletar" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button id="btn-confirm-delete" class="btn btn-danger">Excluir</a>
                     </form>
                 </div>
             </div>

@@ -75,20 +75,38 @@
 
         }
 
-        public function deleteUser($id, $token, $isAdmin){
+        public function deleteUser($id, $token, $isAdmin = null, $deleteMyUser = null){
 
             if(empty($id)){
                 return ['error' => 'Id não informado'];
             }
 
-            $objUser = $this->convertToken($token);
-            if($id == $objUser->id){
-                return ['error' => 'Você não pode estar logado para apagar seu usuário!'];
-            }
-
             $getUserById = $this->getUserById($id, $token, $isAdmin);
             if($getUserById['error']){
                 return $getUserById;
+            }
+
+            $objUser = $this->convertToken($token);
+            if($deleteMyUser){
+                
+                if($id != $objUser->id){
+                    return ['error' => 'Você não pode deletar outro usuário!!!!'];
+                }
+
+                if($getUserById['roles'] == 'admin'){
+                    return ['error' => 'Você é um usuário administrador, não é possível realizar a exclusão via interface.'];
+                }
+
+            } else {
+
+                if($id == $objUser->id){
+                    return ['error' => 'Você não pode estar logado para apagar seu usuário!'];
+                }
+
+            }
+
+            if(!$this->userModel->deleteUserLogs($id)){
+                return ['error' => 'Não foi possível deletar os logs do usuário.'];
             }
     
             if(!$this->userModel->delete($id)){

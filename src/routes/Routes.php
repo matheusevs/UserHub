@@ -234,6 +234,16 @@ class Router
                     
                 }
 
+                if(preg_match('/^\/deletarMeuUsuario\/(\d+)$/', $this->route, $matches)){
+
+                    $this->validateToken();
+                    $id = $matches[1];
+                    $deleteMyUser = $this->UserController->deleteUser($id, $this->token, false, true);
+                    echo json_encode($deleteMyUser);
+                    exit;
+
+                }
+
             break;
 
         }
